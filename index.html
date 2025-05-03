@@ -14,7 +14,7 @@
     html, body {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #fceabb, #f8b500);
+      background: linear-gradient(135deg, #fceabb 30%, #f8b500 80%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -22,8 +22,8 @@
     }
 
     .card-container {
-      width: 420px;
-      height: 600px;
+      width: 480px;
+      height: 700px;
       perspective: 1000px;
     }
 
@@ -49,7 +49,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px 20px;
+      padding: 50px 30px;
     }
 
     .front {
@@ -60,7 +60,7 @@
     .front h1 {
       font-family: 'Great Vibes', cursive;
       color: #f39c12;
-      font-size: 48px;
+      font-size: 58px;
       text-align: center;
       line-height: 1.4;
       margin-top: 80px;
@@ -71,7 +71,7 @@
     }
 
     .open-btn {
-      font-size: 16px;
+      font-size: 18px;
       font-style: italic;
       color: #d35400;
       background: none;
@@ -79,7 +79,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: color 0.3s;
-      margin-bottom: 10px;
+      margin-top: 20px;
     }
 
     .open-btn:hover {
@@ -98,36 +98,37 @@
       align-items: center;
       text-align: center;
       font-style: italic;
-      font-size: 18px;
+      font-size: 20px;
       color: #e67e22;
+      line-height: 1.5;
     }
 
     .top-image {
-      max-width: 150px;
+      max-width: 180px;
       margin-bottom: 15px;
     }
 
     .birthday {
-      max-width: 130px;
+      max-width: 150px;
       margin-bottom: 20px;
     }
 
     @media (max-width: 500px) {
       .card-container {
         width: 90%;
-        height: 70vh;
+        height: 80vh;
       }
 
       .front h1 {
-        font-size: 38px;
+        font-size: 48px;
       }
 
       .top-image {
-        max-width: 110px;
+        max-width: 120px;
       }
 
       .birthday {
-        max-width: 100px;
+        max-width: 110px;
       }
     }
   </style>
