@@ -1,184 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Happy Birthday Akku</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
-    body {
-      height: 100vh;
-      background: #fdfdfd;
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fceabb, #f8b500);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Tangerine', cursive;
-      perspective: 1200px;
+      overflow: hidden;
     }
 
-    input {
-      display: none;
-    }
-
-    .flip-container {
-      width: 90vw;
-      max-width: 350px;
-      height: 80vh;
-      max-height: 500px;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 1s;
-    }
-
-    #open:checked ~ .flip-container {
-      transform: rotateY(180deg);
+    .card-container {
+      width: 420px;
+      height: 600px;
+      perspective: 1000px;
     }
 
     .card {
       width: 100%;
       height: 100%;
-      border: 1px solid #eee;
-      position: absolute;
-      box-shadow: 5px 5px 15px 0 #ddd;
-      background-color: #fff;
-      background-size: cover;
-      background-position: center;
-      backface-visibility: hidden;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s ease-in-out;
     }
 
-    .pg1 {
-      z-index: 2;
-      background-image: url("https://assets.stickpng.com/thumbs/580b585b2edbce24c47b26dd.png");
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-
-    .pg1 .title {
-      margin-top: 60px;
-    }
-
-    .pg1 .h, .pg1 .bd, .pg1 .ak {
-      background: linear-gradient(
-        -45deg,
-        rgba(15, 59, 95, .6) 25%,
-        rgba(15, 59, 95, 1) 25%,
-        rgba(15, 59, 95, 1) 50%,
-        rgba(15, 59, 95, .6) 50%,
-        rgba(15, 59, 95, .6) 75%,
-        rgba(15, 59, 95, 1) 75%,
-        rgba(15, 59, 95, 1)
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      font-weight: bold;
-    }
-
-    .pg1 .h {
-      font-size: clamp(2rem, 8vw, 6rem);
-    }
-
-    .pg1 .bd {
-      font-size: clamp(1.5rem, 6vw, 5rem);
-    }
-
-    .pg1 .ak {
-      font-size: clamp(1.5rem, 6vw, 5rem);
-    }
-
-    .pg1 .click {
-      margin-top: auto;
-      padding-bottom: 20px;
-      font-size: clamp(1rem, 4vw, 2rem);
-      color: #444;
-    }
-
-    .pg2 {
+    .card.opened {
       transform: rotateY(180deg);
-      z-index: 1;
     }
 
-    .pg2 .content {
+    .card-face {
+      position: absolute;
       width: 100%;
       height: 100%;
-      position: relative;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
     }
 
-    .pg2 .top-image {
-      max-width: 80%;
-      height: auto;
-      display: block;
-      margin: 30px auto 0 auto;
-      border-radius: 10px;
+    .front {
+      background: #fff;
+      justify-content: space-between;
     }
 
-    .pg2 .birthday {
-      max-width: 90%;
-      height: auto;
-      position: absolute;
-      top: 70%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-10deg);
-    }
-
-    .pg3 {
-      display: none; /* optional: show later or merge into pg2 */
-    }
-
-    .pg3 .content {
-      padding: 60px 20px;
-      font-size: clamp(1rem, 3.5vw, 2rem);
-      font-weight: bold;
-      color: rgba(212, 25, 25, 0.85);
-      height: 100%;
-      overflow-y: auto;
+    .front h1 {
+      font-family: 'Great Vibes', cursive;
+      color: #f39c12;
+      font-size: 48px;
       text-align: center;
+      line-height: 1.4;
+      margin-top: 80px;
     }
 
-    @media (max-width: 400px) {
-      .pg1 .title {
-        margin-top: 30px;
+    .front h1 span {
+      display: block;
+    }
+
+    .open-btn {
+      font-size: 16px;
+      font-style: italic;
+      color: #d35400;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.3s;
+      margin-bottom: 10px;
+    }
+
+    .open-btn:hover {
+      color: #e67e22;
+    }
+
+    .back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      justify-content: space-between;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-style: italic;
+      font-size: 18px;
+      color: #e67e22;
+    }
+
+    .top-image {
+      max-width: 150px;
+      margin-bottom: 15px;
+    }
+
+    .birthday {
+      max-width: 130px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 500px) {
+      .card-container {
+        width: 90%;
+        height: 70vh;
       }
 
-      .pg3 .content {
-        padding: 20px 15px;
-        font-size: 1rem;
+      .front h1 {
+        font-size: 38px;
       }
 
-      .pg2 .birthday {
-        max-width: 80%;
-        top: 75%;
+      .top-image {
+        max-width: 110px;
+      }
+
+      .birthday {
+        max-width: 100px;
       }
     }
   </style>
 </head>
 <body>
-  <input id="open" type="checkbox" />
-  <label for="open" class="flip-container">
-    <div class="card pg1">
-      <div class="title">
-        <div class="h">Happy</div>
-        <div class="bd">Birthday</div>
-        <div class="ak">Akku</div>
-      </div>
-      <div class="click">Click To Open</div>
+
+<div class="card-container">
+  <div class="card" id="card">
+    <!-- Front Face -->
+    <div class="card-face front">
+      <h1>
+        <span>Happy</span>
+        <span>Birthday</span>
+        <span>Akku</span>
+      </h1>
+      <button class="open-btn" onclick="toggleCard()">Click to Open</button>
     </div>
 
-    <div class="card pg2">
+    <!-- Back Face -->
+    <div class="card-face back">
       <div class="content">
-        <img class="top-image" src="akku.jpeg" alt="Top Decoration" />
-        <img class="birthday" src="https://images.all-free-download.com/images/graphicthumb/best_happy_birthday_design_elements_vector_set_524004.jpg" alt="Birthday Art" />
+        <img class="top-image" src="akku.jpeg" alt="Top Image" />
+        <img class="birthday" src="https://images.all-free-download.com/images/graphicthumb/best_happy_birthday_design_elements_vector_set_524004.jpg" alt="Birthday Sticker" />
       </div>
+      <div class="content">
+        Happiest Birthday, dear Akku!<br><br>
+        Wishing you a year full of love, joy, and unforgettable moments.<br><br>
+        I miss you so much here. Sending you lots and lots of love.<br><br>
+      </div>
+      <button class="open-btn" onclick="toggleCard()">Back to Front</button>
     </div>
-  </label>
+  </div>
+</div>
+
+<script>
+  function toggleCard() {
+    document.getElementById('card').classList.toggle('opened');
+  }
+</script>
+
 </body>
 </html>
